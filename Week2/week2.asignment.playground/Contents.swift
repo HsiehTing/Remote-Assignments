@@ -20,16 +20,12 @@
  ```
  ```
  class Animal {
-     enum Gender {
-         case male
-         
-         case female
-         
-         case undefined
-     }
-     
+     var gender: Gender
      func eat() -> String {
          return "I eat everything!"
+     }
+     init(gender: Gender) {
+         self.gender = gender
      }
  }
  ```
@@ -68,13 +64,13 @@
      zoo.weeklyHot = elephant
      zoo.weeklyHot = horse`
      
- 這個問題與swift class 的多態性（polymorphism）有關，多態性的意思是在 Swift 中可以透過parent class 的變數來引用 subclass 的物件。當 WeeklyHot 要是某一類型別，而這些型別要剛好可以被 Tiger、Elephant、Horse 服從，那就是他們的 parentclass ‘Animal’
+ 這個問題與swift class 的多態性（polymorphism）有關，多態性的意思是在 Swift 中可以透過parent class 的變數來引用 subclass 的物件。題目表示 WeeklyHot 要是某一類型別，而這些型別要剛好可以被 Tiger、Elephant、Horse 服從，那就是他們的 parentclass ‘Animal’
 
  ## 1. What is an instance? What does Initializer do in Class and Struct?
 
  instance（實例）和 type（屬性）是相對的案例，type 用於儲存 class 或 struct 的內部屬性，而instance 則是將 type 實體化，並且提供存取使用。
 
-  在 Class 中 initializer 是必要出現的，在創建 instance 之前 Class 需要將每個 type 都定義好初始的值或是單純定義一個屬性，好讓 class 外部的 instance 來使用到 class 內的物件。
+  在 Class 中會需要對物件或是函式進行啟動 initialize ，在創建 instance 之前 Class 需要將每個 type 都定義好初始的值或是單純定義一個屬性，好讓 class 外部的 instance 來使用到 class 內的物件。
 
  在 Struct 中，initializer 不是必要出現的，他僅有為struct 創建一個預設值的作用。
  ## 2. What’s the difference between Struct and Class ?
@@ -111,7 +107,7 @@
          case gasoline95
          case gasoline98
          case gasolineDiesel
-
+ 
      func price() -> Int {
          switch self {
          case .gasoline92:
@@ -124,8 +120,8 @@
              return 115
          }
      }
-     
-     var getPrice: Int {
+
+     func getPrice() -> Int {
          switch self {
          case .gasoline92:
              return 100
@@ -137,7 +133,7 @@
              return 115
          }
      }
-     
+        
  }
  ```
 
@@ -343,3 +339,4 @@
  ```
 
 */
+
