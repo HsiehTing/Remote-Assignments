@@ -217,19 +217,18 @@
  ## 3. Declare a protocol ToolMan with a method fixComputer that has no argument.
  ```
  protocol Toolman {
-     func fixCpmputer()
+     func fixComputer()
  }
 
  ```
  ## 4. Add a property toolMan to the struct Person with data type ToolMan .
  ```
- struct Person: Policeman, Toolman {
+ struct Person: Policeman {
      func arrestCriminal() {
          print("arrest crimianl")
      }
-     func fixComputer() {
-         print("fix computer")
-     }
+     
+     var toolman: Toolman
  }
  ```
  ## 5. Declare a struct named Engineer that conforms to the ToolMan protocol.
@@ -339,4 +338,22 @@
  ```
 
 */
+
+protocol Policeman {
+    func arrestCriminal()
+}
+
+struct Person: Policeman {
+    func arrestCriminal() {
+        print("arrest crimianl")
+    }
+    
+    var toolman: Toolman
+}
+protocol Toolman {
+    func fixComputer()
+}
+
+
+
 
