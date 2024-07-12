@@ -8,20 +8,24 @@
 import UIKit
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var appTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
  
+        appTableView.dataSource = self
+        appTableView.delegate = self
+        appTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+           
     }
 
 }
 extension ViewController: UITableViewDataSource{
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        2
+       return  2
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
